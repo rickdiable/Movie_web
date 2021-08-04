@@ -96,6 +96,10 @@ function renderPaginator(amount) {
     rawHTML += `<li class="page-item"><a class="page-link" href="#" data-page="${page}">${page}</a></li>`;
   }
   paginator.innerHTML = rawHTML;
+  // 當篩選清單沒有內容時 找不到 paginator的子元素便會報錯且最後一筆資料不會從畫面中移除
+  if(list.length === 0){
+    return
+  }
   paginator.children[NOW_PAGE - 1].classList.add("active");
 }
 
@@ -153,6 +157,7 @@ function removeFavorite(id){
   let itemIndex = list.findIndex(item => item.id === id);
   if(itemIndex === -1) return;  
   list.splice(itemIndex,1)
+  console.log(list);
   localStorage.setItem("favoriteMovies", JSON.stringify(list));
   renderPaginator(list.length);
   renderFavoriteList(getMovieByPage(NOW_PAGE));
