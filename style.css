@@ -1,0 +1,12 @@
+.movie-list-mode {
+  border-top: 1px solid #e0e0e0;
+  padding-top: 15px;
+}
+
+#paginator {
+  margin-top: 30px;
+}
+
+#card-mode {
+  /*   color: red; */
+}
